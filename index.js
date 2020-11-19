@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+const testData = require('./data-structure.json')
+
 
 const app = express();
 
@@ -12,6 +14,12 @@ app.get('/api/getList', (req,res) => {
     res.json(list);
     console.log('Sent list of items');
 });
+
+app.get('/api/getData', (req, res) => {
+    console.log(testData);
+    res.json(testData)
+    console.log("Test Data Sent");
+})
 
 // Handles any requests that don't match the ones above
 app.get('*', (req,res) =>{
