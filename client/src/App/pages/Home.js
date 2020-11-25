@@ -5,15 +5,20 @@ import { Link } from 'react-router-dom';
 class Home extends Component {
   render() {
     return (
-    <div className="App">
-      <h1>Project Home</h1>
-      {/* Link to List.js */}
-      <Link to={'./list'}>
-        <button variant="raised">
-            My List
+      <div className="App">
+        <h1>Project Home</h1>
+        {/* Link to List.js */}
+        <Link to={'./test'}>
+          <button variant="raised">
+            TestData
         </button>
-      </Link>
-    </div>
+        </Link>
+        <Link to={'./test'}>
+          <button variant="raised">
+            Basic Pagination
+        </button>
+        </Link>
+      </div>
     );
   }
 }

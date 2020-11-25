@@ -4,6 +4,8 @@ import './App.css';
 import Home from './pages/Home';
 import List from './pages/List';
 import Test from './pages/Test'
+import Topic from './pages/Components/Topic';
+import Pagination from './pages/Pagination';
 
 class App extends Component {
   render() {
@@ -13,6 +15,8 @@ class App extends Component {
           <Route exact path='/' component={Home}/>
           <Route path='/list' component={List}/>
           <Route path='/test' component={Test}/>
+          <Route exact path='/topic' component={Pagination}/>
+          <Route path='/topic/:topicID' component={Topic}/>
         </Switch>
       </div>
     )

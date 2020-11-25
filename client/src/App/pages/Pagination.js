@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-class Test extends Component {
+class Pagination extends Component {
   // Initialize the state
   constructor(props){
     super(props);
@@ -32,28 +33,14 @@ class Test extends Component {
           <div>
             {/* Render the list of items */}
             {data.map((item) => {
-              return(
-                <div>
-                    <h1>{item.name}</h1>
-                    {item.description}
-                    <div>
-                        {item.video.embed 
-                            ? <iframe src={item.video.link}  width="560" height="315"></iframe>
-                            : <a href={item.video.link}>Video Link</a>
-                        }
-                    </div>
-                    <p>Dependencies: 
-                        {
-                            data.filter((node) => item.dependencies.includes(node.id)).map(x => <div>{x.name}</div>)
-                        }
-                        </p>
-                </div>
-              );
+              return (
+                  <Link to/> // TODO: ADD PAGE FOR EACH ITEM
+              )
             })}
           </div>
         ) : (
           <div>
-            <h2>No List Items Found</h2>
+            <h2>No Data Found</h2>
           </div>
         )
       }
@@ -62,4 +49,4 @@ class Test extends Component {
   }
 }
 
-export default Test;
+export default Pagination;

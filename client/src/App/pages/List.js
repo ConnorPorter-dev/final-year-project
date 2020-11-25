@@ -41,7 +41,7 @@ class List extends Component {
           </div>
         ) : (
           <div>
-            <h2>No List Items Found</h2>
+            <h2>No Data Found</h2>
           </div>
         )
       }
