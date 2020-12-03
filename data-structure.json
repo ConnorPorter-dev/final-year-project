@@ -3,7 +3,7 @@
         "id": 0,
         "critical": 1,
         "name": "Main Class",
-        "description": "The main class is the main class. The info for the main class is as follows. It's the main class",
+        "description": "The main class is the main class.\nxThe info for the main class is as follows. It's the main class",
         "video": {
             "link": "https://www.youtube.com/embed/6J56TEMFjDs",
             "embed": true
