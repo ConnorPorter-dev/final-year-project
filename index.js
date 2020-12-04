@@ -2,10 +2,11 @@ const express = require('express');
 const path = require('path');
 const helmet = require("helmet");
 const testData = require('./data-structure.json')
-
+const morgan = require('morgan')
 
 const app = express();
 app.use(helmet());
+app.use(morgan('dev'))
 
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
