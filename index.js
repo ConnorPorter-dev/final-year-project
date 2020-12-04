@@ -1,19 +1,18 @@
 const express = require('express');
 const path = require('path');
+const helmet = require("helmet");
 const testData = require('./data-structure.json')
 
 
 const app = express();
+app.use(helmet());
 
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
-// An api endpoint that returns a short list of items
-app.get('/api/getList', (req,res) => {
-    var list = ["item1", "item2", "item3"];
-    res.json(list);
-    console.log('Sent list of items');
-});
+app.get('/api/topic/:uid', (req, res) => {
+    res.json(testData.filter(topic => topic.id == req.params.uid)[0])
+})
 
 app.get('/api/getData', (req, res) => {
     console.log(testData);
