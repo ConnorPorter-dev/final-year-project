@@ -7,7 +7,7 @@
     "server": "node index.js",
     "start-front-end": "cd client && npm run start",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
-    "run-both" : "start npm run start-front-end && npm run server"
+    "run-both": "start npm run start-front-end && npm run server"
   },
   "repository": {
     "type": "git",
@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/ConnorPorter-dev/final-year-project#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "helmet": "^4.2.0",
+    "morgan": "^1.10.0"
   }
 }
