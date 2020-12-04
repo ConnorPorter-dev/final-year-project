@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
 import List from './pages/List';
@@ -16,7 +16,7 @@ class App extends Component {
           <Route path='/list' component={List}/>
           <Route path='/test' component={Test}/>
           <Route exact path='/topic' component={Pagination}/>
-          <Route path='/topic/:topicID' component={Topic}/>
+          <Route path='/topic/:topicID' component={withRouter(Topic)}/>
         </Switch>
       </div>
     )

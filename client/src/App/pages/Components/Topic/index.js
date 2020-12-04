@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './Topic.css'
 
 // Component to display a topic information on the page based on the url
@@ -29,6 +30,7 @@ function Topic({ match }) {
                         : <a href={topic.video.link}>Video Link</a>
                     }
                 </div>
+                <p><Link to={`/topic/${topic.next}`}>Next Topic</Link></p>
             </div>
         )
     } else {
