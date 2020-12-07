@@ -1,3 +1,11 @@
 .topicDescription {
     white-space: pre-wrap;
 }
+
+.codeContainer {
+    max-width: 50%;
+}
+
+.codeContainer2 {
+    width: 50%;
+}
