@@ -12,10 +12,12 @@ app.use(morgan('dev'))
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
 
+// Obtain an topic by topic ID
 app.get('/api/topic/:uid', (req, res) => {
     res.json(topicData.find(topic => topic.id == req.params.uid))
 })
 
+// Obtain all data from the server in one request 
 app.get('/api/getData', (req, res) => {
     console.log(topicData);
     res.json(topicData)
