@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const helmet = require("helmet");
-const testData = require('./data-structure.json')
+const topicData = require('./new-data-structure.json')
+
 const morgan = require('morgan')
 
 const app = express();
@@ -12,12 +13,12 @@ app.use(morgan('dev'))
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('/api/topic/:uid', (req, res) => {
-    res.json(testData.filter(topic => topic.id == req.params.uid)[0])
+    res.json(topicData.find(topic => topic.id == req.params.uid))
 })
 
 app.get('/api/getData', (req, res) => {
-    console.log(testData);
-    res.json(testData)
+    console.log(topicData);
+    res.json(topicData)
     console.log("Test Data Sent");
 })
 
