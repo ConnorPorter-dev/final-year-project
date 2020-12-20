@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CodeComponent from '../CodeComponent';
+import Video from '../Video'
 import './Topic.css'
 
 // Component to display a topic information on the page based on the url
+// Requires a call to server to obtain the topic
 function Topic({ match }) {
 
     const [loading, setLoading] = useState(true)
@@ -19,31 +21,27 @@ function Topic({ match }) {
             .then(topic => setTopic(topic))
             .then(x => setLoading(false))
     }
-
+    // Will load the page depending on the array data types. This will allow for more flexibility within the pages
+    // This also allows for future expandability for new data types
     if (!loading) {
-        return (
-            <div>
-                <h1>{topic.name}</h1>
-                <p className="topicDescription">{topic.description}</p>
-                <div>
-                    {topic.video.embed
-                        ? <iframe src={topic.video.link} width="560" height="315"></iframe>
-                        : <a href={topic.video.link}>Video Link</a>
-                    }
-                </div>
-                {
-                    topic.code &&
-                    <div className="codeContainer">
-                        <CodeComponent code={topic.code} />
-                        <textarea className="codeContainer2">{topic.code}</textarea>
-                    </div>
-                }
+        return (<div>
+            <h1>{topic.name}</h1>
+            {topic.content.map(content => {
+            switch (content.type) {
+                case "code":
+                    return <CodeComponent content={content} />
+                case "video":
+                    return <Video content={content} />
+                default:
+                    return <p>Error reading content type: {content.type}</p>
+            }
+        })}
+        <p><Link to={`/topic/${topic.next}`}>Next Topic</Link></p>
+        </div>)
 
-
-                <p><Link to={`/topic/${topic.next}`}>Next Topic</Link></p>
-            </div>
-        )
     } else {
+        // Shows loading while page is still obtaining server data
+        // TODO: ADD 404 PAGE
         return <h1>Loading...</h1>
     }
 
