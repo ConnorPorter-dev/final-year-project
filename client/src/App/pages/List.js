@@ -6,8 +6,8 @@ const List = () => {
   const example = ["Line 1", "     Line 2", "     Line 3"]
   return (
     <div>
-      <CodeComponent code="dont break please" />
-      <CustomCode lines={example} />
+      <CodeComponent code="dont break please" topics={["Hello World", "Test Data"]} />
+      {/* <CustomCode lines={example} /> */}
     </div>
   )
 }

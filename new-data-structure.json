@@ -1,0 +1,33 @@
+[
+    {
+        "id": 0,
+        "critical": 1,
+        "name": "Main Class",
+        "description": "THIS IS THE MAIN CLASS",
+        "next": 1,
+        "content": [
+            {
+                "type": "code",
+                "fullcode": "Several lines of code seperated with \n hello new line",
+                "lines": [{
+                    "linenumber": 0,
+                    "line": "Actual Line of Code",
+                    "links": [{
+                        "name": "Linked Topic Name",
+                        "id": 0
+                    }]
+                }]
+            },
+            {
+                "type": "video",
+                "link": "link to video",
+                "button-text": "Text to show as link",
+                "embed": false
+            },
+            {
+                "type": "html",
+                "html": "Bulk of html to be inserted"
+            }
+        ]
+    }
+]

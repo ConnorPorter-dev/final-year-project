@@ -5,9 +5,13 @@ import { dracula } from 'react-syntax-highlighter/dist/esm/styles/prism';
 const CodeComponent = (props) => {
 
     return (
-        <SyntaxHighlighter language="java" style={dracula} showLineNumbers={true} wrapLongLines={true}>
-            {props.code}
-        </SyntaxHighlighter>
+        <div>
+            <SyntaxHighlighter language="java" style={dracula} showLineNumbers={true} wrapLongLines={true}>
+                {props.code}
+            </SyntaxHighlighter>
+            <div>Line Analysis: {props.topics.map(item => item + " ")}</div>
+        </div>
+
     )
 }
 
