@@ -9,6 +9,7 @@ Learning platform to help facilitate students learning Java in a remote learning
 ## Upcoming Features
 - Quizzes
 - Individual user analysis of quiz results
+- Auto Regex analysis of code
 
 ## Setup
 Set up & run configuration

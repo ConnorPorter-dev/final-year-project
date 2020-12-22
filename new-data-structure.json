@@ -5,6 +5,7 @@
         "name": "Main Class",
         "description": "THIS IS THE MAIN CLASS",
         "next": 1,
+        "regex-key": [""],
         "content": [
             {
                 "type": "code",
