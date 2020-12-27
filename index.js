@@ -25,11 +25,37 @@ app.get('/api/getData', (req, res) => {
 })
 
 // Handles any requests that don't match the ones above
-app.get('*', (req,res) =>{
-    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
 const port = process.env.PORT || 5000;
 app.listen(port);
 
 console.log('App is listening on port ' + port);
+
+// Very costly function - should be used sparingly
+// TODO: design conditions that this will trigger 
+const updateLines = () => {
+    // Cycle through loaded data:
+    // Every Topic
+    // Every Content in Topic where type=code
+    // Every Line in Code Content Lines[]
+    const newData = topicData.map(topic => {
+        topic.content = topic.content.map(content => {
+            if (content.type != "code") {
+                return content
+            }
+            content.lines.map(line => {
+                console.log(line.line);
+                // Pass every line to new function that processes line and then returns with new line that includes 
+                return content
+            })
+        })
+        return topic
+    })
+
+    //Save Data function
+}
+
+updateLines()
