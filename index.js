@@ -38,6 +38,7 @@ console.log('App is listening on port ' + port);
 // TODO: design conditions that this will trigger 
 // TODO: Figure out O notation
 const updateLines = () => {
+    // Creates array of regex references ready for comparison
     const newRegArr = () => {
         let arr = []
         topicData.map(topic => {
@@ -53,6 +54,7 @@ const updateLines = () => {
     }
     const regexArray = newRegArr()
 
+    // Takes a line and adds in links based on regex for each topic
     const createLinks = (line) => {
         line.links = []
         regexArray.map(topic => {
@@ -89,10 +91,7 @@ const updateLines = () => {
         })
         return topic
     })
-
-    
-
     //Save Data function
 }
 
-updateLines()
+updateLines() // Currently breaks app, disable to use with front end
