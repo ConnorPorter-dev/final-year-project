@@ -74,8 +74,10 @@ const updateLines = () => {
     // Cycle through loaded data:
     // Every Topic
     // Every Content in Topic where type=code
-    // Every Line in Code Content Lines[]
+    // Every Line passed to createLinks()
     const newData = topicData.map(topic => {
+
+        // DIRECTLY AFFECTS LOADED DATA, NEED TO CHANGE TO NOT DO THAT
         topic.content = topic.content.map(content => {
             if (content.type != "code") {
                 return content
@@ -84,7 +86,6 @@ const updateLines = () => {
                 console.log(line.line);
                 line = createLinks(line)
                 return line
-                // Pass every line to new function that processes line and then returns with new line that includes new line.links
             })
             console.log(newLines);
             return content
