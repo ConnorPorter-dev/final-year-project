@@ -1,16 +1,42 @@
 const express = require('express');
 const path = require('path');
 const helmet = require("helmet");
-const topicData = require('./new-data-structure.json')
+const fs = require('fs')
+let topicData = require('./new-data-structure.json')
 
 const morgan = require('morgan')
 
 const app = express();
 app.use(helmet());
-app.use(morgan('dev'))
+app.use(morgan('dev')) // Logging
+app.use(express.json())
 
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));
+
+// Adds a topic. This is a HIGH security risk currently as there is no authentication
+app.post('/api/addtopic', (req, res) => {
+    console.log(req.body);
+    code = req.body.data
+    topicData.push({
+        "id": 3,
+        "critical": 3,
+        "name": "Print Line",
+        "description": "adf",
+        "next": 1,
+        "regexkey": ["[a-zA-Z]*println[a-zA-Z]*"],
+        "content": [
+            {
+                "type": "code",
+                "fullcode": code,
+                "lines": []
+            }
+        ]
+    })
+    updateLines()
+    saveData()
+    res.sendStatus(200)
+})
 
 // Obtain an topic by topic ID
 app.get('/api/topic/:uid', (req, res) => {
@@ -33,6 +59,12 @@ const port = process.env.PORT || 5000;
 app.listen(port);
 
 console.log('App is listening on port ' + port);
+
+const saveData = () => {
+    let json = JSON.stringify(topicData);
+    fs.writeFile('myjsonfile.json', json, 'utf8', ()=> console.log("Saved"))
+}
+
 
 // Very costly function for larger data sets- should be used sparingly
 // TODO: design conditions that this will trigger 
@@ -70,18 +102,33 @@ const updateLines = () => {
         })
         return line
     }
+    const createLines = (code) => {
+        console.log(code);
+        const allLines = code.fullcode.split("\n")
+        let lineNum = 0
+        const lines = allLines.map(line => {
+            const pos = lineNum
+            lineNum++
+            return ({
+                linenumber: pos,
+                line: line,
+            })
+        })
+        return lines
+    }
 
     // Cycle through loaded data:
     // Every Topic
     // Every Content in Topic where type=code
     // Every Line passed to createLinks()
-    const newData = topicData.map(topic => {
-
+    const newData = JSON.parse(JSON.stringify(topicData)).map(topic => {
+        
         // DIRECTLY AFFECTS LOADED DATA, NEED TO CHANGE TO NOT DO THAT
         topic.content = topic.content.map(content => {
             if (content.type != "code") {
                 return content
             }
+            content.lines = createLines(content)
             let newLines = content.lines.map(line => {
                 console.log(line.line);
                 line = createLinks(line)
@@ -92,7 +139,10 @@ const updateLines = () => {
         })
         return topic
     })
-    //Save Data function
+
+    // TODO: Add Validate Data function
+    // TODO: Add Save Data function
+    topicData = newData
 }
 
-updateLines() // Currently breaks app, disable to use with front end
+updateLines() // Delete eventually, this is for testing purposes
