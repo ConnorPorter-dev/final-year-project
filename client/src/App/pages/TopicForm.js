@@ -1,15 +1,30 @@
 import React, { Component } from 'react';
-import CodeComponent from './Components/CodeComponent';
-import CustomCode from './Components/CustomCode';
 
+// Probably the worst code ever made. Please refactor
 const TopicForm = () => {
+
+    const contentHandler = () => {
+        let content =[]
+        for (let index = 1; index <= 6; index++) {
+            if (document.getElementById(`type${index}`).value.length > 0) {
+                content.push({
+                    type: document.getElementById(`type${index}`).value,
+                    data: document.getElementById(`value${index}`).value
+                })
+            }
+
+        }
+        return content
+    }
+
     const getData = () => {
-        const content = []
+        const content = contentHandler()
         const dataBody = {
             name: document.getElementById("name").value,
             regex: document.getElementById("regex").value,
             next: document.getElementById("next").value,
-            
+            content: content
+
         }
         fetch('/api/addtopic', {
             method: 'POST',
