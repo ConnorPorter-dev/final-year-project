@@ -2,7 +2,8 @@ const express = require('express');
 const path = require('path');
 const helmet = require("helmet");
 const fs = require('fs')
-let topicData = require('./new-data-structure.json')
+const topicDataStoreName = "topic-data"
+let topicData = require(`./data/${topicDataStoreName}.json`)
 
 const morgan = require('morgan')
 
@@ -17,21 +18,15 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 // Adds a topic. This is a HIGH security risk currently as there is no authentication
 app.post('/api/addtopic', (req, res) => {
     console.log(req.body);
-    code = req.body.data
+    const topic = req.body
     topicData.push({
-        "id": 3,
+        "id": Math.floor(Math.random() * Math.floor(20000)),
         "critical": 3,
-        "name": "Print Line",
-        "description": "adf",
-        "next": 1,
-        "regexkey": ["[a-zA-Z]*println[a-zA-Z]*"],
-        "content": [
-            {
-                "type": "code",
-                "fullcode": code,
-                "lines": []
-            }
-        ]
+        "name": topic.name,
+        "description": "",
+        "next": topic.next,
+        "regexkey": [topic.regex], // NEEDS TO BE ARRAY
+        "content": topic.content
     })
     updateLines()
     saveData()
@@ -62,7 +57,7 @@ console.log('App is listening on port ' + port);
 
 const saveData = () => {
     let json = JSON.stringify(topicData);
-    fs.writeFile('myjsonfile.json', json, 'utf8', ()=> console.log("Saved"))
+    fs.writeFile(`./data/${topicDataStoreName}.json`, json, 'utf8', ()=> console.log("Saved"))
 }
 
 
@@ -104,7 +99,7 @@ const updateLines = () => {
     }
     const createLines = (code) => {
         console.log(code);
-        const allLines = code.fullcode.split("\n")
+        const allLines = code.data.split("\n")
         let lineNum = 0
         const lines = allLines.map(line => {
             const pos = lineNum
