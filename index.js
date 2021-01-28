@@ -3,6 +3,7 @@ const path = require('path');
 const helmet = require("helmet");
 const fs = require('fs')
 const topicDataStoreName = "topic-data"
+let serverSettings = require("./server-settings.json")
 let topicData = require(`./data/${topicDataStoreName}.json`)
 
 const morgan = require('morgan')
@@ -20,7 +21,7 @@ app.post('/api/addtopic', (req, res) => {
     console.log(req.body);
     const topic = req.body
     topicData.push({
-        "id": Math.floor(Math.random() * Math.floor(20000)),
+        "id": topicnum+1,
         "critical": 3,
         "name": topic.name,
         "description": "",
@@ -29,6 +30,7 @@ app.post('/api/addtopic', (req, res) => {
         "content": topic.content
     })
     updateLines()
+    saveSettings()
     saveData()
     res.sendStatus(200)
 })
@@ -55,9 +57,18 @@ app.listen(port);
 
 console.log('App is listening on port ' + port);
 
+const saveSettings = () => {
+    serverSettings.topicnum++
+    console.log("Incremented Topic");
+    let serverSettings = JSON.stringify(serverSettings);
+
+    fs.writeFile(`./data/${topicDataStoreName}.json`, serverSettings, 'utf8', ()=> console.log("Saved Settings"))
+}
+
 const saveData = () => {
-    let json = JSON.stringify(topicData);
-    fs.writeFile(`./data/${topicDataStoreName}.json`, json, 'utf8', ()=> console.log("Saved"))
+    let topicjson = JSON.stringify(topicData);
+
+    fs.writeFile(`./data/${topicDataStoreName}.json`, topicjson, 'utf8', ()=> console.log("Saved Topics"))
 }
 
 
@@ -136,7 +147,6 @@ const updateLines = () => {
     })
 
     // TODO: Add Validate Data function
-    // TODO: Add Save Data function
     topicData = newData
 }
 
