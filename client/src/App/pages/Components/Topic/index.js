@@ -33,7 +33,7 @@ function Topic({ match }) {
                 case "video":
                     return <Video content={content} />
                 case "html": // PLACEHOLDER FOR HTML
-                    return <p>{content.html}</p>
+                    return <p>{content.data}</p>
                 default:
                     return <p>Error reading content type: {content.type}</p>
             }
