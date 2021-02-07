@@ -10,11 +10,11 @@ const CodeComponent = (props) => {
     return (
         <div>
             <SyntaxHighlighter language="java" style={dracula} showLineNumbers={true} wrapLongLines={true}>
-                {props.content.fullcode}
+                {props.content.data}
             </SyntaxHighlighter>
             <select onChange={e => setLine(props.content.lines.find(line => e.target.value == line.linenumber))}>
                 <option value={null} selected></option>
-                {props.content.lines.map(line => <option key={line.linenumber} value={line.linenumber}>Line {line.linenumber}</option>)}
+                {props.content.lines.map(line => <option key={line.linenumber} value={line.linenumber}>Line {line.linenumber+1}</option>)}
             </select>
             {
                 (selectedLine != null) 

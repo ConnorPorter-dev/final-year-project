@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
-import List from './pages/List';
+import TopicForm from './pages/TopicForm';
 import Test from './pages/Test'
 import Topic from './pages/Components/Topic';
 import Pagination from './pages/Pagination';
@@ -13,7 +13,7 @@ class App extends Component {
       <div>
         <Switch>
           <Route exact path='/' component={Home}/>
-          <Route path='/list' component={List}/>
+          <Route path='/form' component={TopicForm}/>
           <Route path='/test' component={Test}/>
           <Route exact path='/topic' component={Pagination}/>
           <Route path='/topic/:topicID' component={withRouter(Topic)}/>
