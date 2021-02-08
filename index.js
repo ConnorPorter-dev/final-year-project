@@ -21,7 +21,7 @@ app.post('/api/addtopic', (req, res) => {
     console.log(req.body);
     const topic = req.body
     topicData.push({
-        "id": topicnum+1,
+        "id": serverSettings.topicnum+1,
         "critical": 3,
         "name": topic.name,
         "description": "",
@@ -60,9 +60,9 @@ console.log('App is listening on port ' + port);
 const saveSettings = () => {
     serverSettings.topicnum++
     console.log("Incremented Topic");
-    let serverSettings = JSON.stringify(serverSettings);
+    let newSettings = JSON.stringify(serverSettings);
 
-    fs.writeFile(`./data/${topicDataStoreName}.json`, serverSettings, 'utf8', ()=> console.log("Saved Settings"))
+    fs.writeFile(`./data/${topicDataStoreName}.json`, newSettings, 'utf8', ()=> console.log("Saved Settings"))
 }
 
 const saveData = () => {
