@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CodeComponent from '../CodeComponent';
+import { MDBJumbotron, MDBContainer } from 'mdbreact';
 import Video from '../Video'
 import './Topic.css'
 
@@ -24,21 +25,28 @@ function Topic({ match }) {
     // Will load the page depending on the array data types. This will allow for more flexibility within the pages
     // This also allows for future expandability for new data types
     if (!loading) {
-        return (<div>
-            <h1>{topic.name}</h1>
-            {topic.content.map(content => {
-            switch (content.type) {
-                case "code":
-                    return <CodeComponent content={content} />
-                case "video":
-                    return <Video content={content} />
-                case "html": // PLACEHOLDER FOR HTML
-                    return <p>{content.data}</p>
-                default:
-                    return <p>Error reading content type: {content.type}</p>
-            }
-        })}
-        <p><Link to={`/topic/${topic.next}`}>Next Topic</Link></p>
+        return (<div className="outer-container">
+            <div className="inner-container">
+                <div className="topic-title-container">
+                    <h1 id="topic-title">{topic.name}</h1>
+                </div>
+                <h1 id="topic-title">{topic.name}</h1>
+
+                {topic.content.map(content => {
+                    switch (content.type) {
+                        case "code":
+                            return <CodeComponent content={content} />
+                        case "video":
+                            return <Video content={content} />
+                        case "html": // PLACEHOLDER FOR HTML
+                            return <p>{content.data}</p>
+                        default:
+                            return <p>Error reading content type: {content.type}</p>
+                    }
+                })}
+                <p><Link to={`/topic/${topic.next}`}>Next Topic</Link></p>
+            </div>
+
         </div>)
 
     } else {
