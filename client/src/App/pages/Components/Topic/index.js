@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CodeComponent from '../CodeComponent';
-import { MDBJumbotron, MDBContainer } from 'mdbreact';
+import ReactMarkdown from 'react-markdown'
 import Video from '../Video'
 import './Topic.css'
 
@@ -38,8 +38,8 @@ function Topic({ match }) {
                             return <CodeComponent content={content} />
                         case "video":
                             return <Video content={content} />
-                        case "html": // PLACEHOLDER FOR HTML
-                            return <p>{content.data}</p>
+                        case "markdown": // Markdown Content
+                            return <ReactMarkdown>{content.data}</ReactMarkdown>
                         default:
                             return <p>Error reading content type: {content.type}</p>
                     }
