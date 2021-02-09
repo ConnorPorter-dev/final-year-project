@@ -59,10 +59,10 @@ console.log('App is listening on port ' + port);
 
 const saveSettings = () => {
     serverSettings.topicnum++
-    console.log("Incremented Topic");
+    console.log("Incremented Topic: " + serverSettings.topicnum);
     let newSettings = JSON.stringify(serverSettings);
 
-    fs.writeFile(`./data/${topicDataStoreName}.json`, newSettings, 'utf8', ()=> console.log("Saved Settings"))
+    fs.writeFile(`./server-settings.json`, newSettings, 'utf8', ()=> console.log("Saved Settings"))
 }
 
 const saveData = () => {
@@ -109,7 +109,6 @@ const updateLines = () => {
         return line
     }
     const createLines = (code) => {
-        console.log(code);
         const allLines = code.data.split("\n")
         let lineNum = 0
         const lines = allLines.map(line => {
@@ -136,11 +135,9 @@ const updateLines = () => {
             }
             content.lines = createLines(content)
             let newLines = content.lines.map(line => {
-                console.log(line.line);
                 line = createLinks(line)
                 return line
             })
-            console.log(newLines);
             return content
         })
         return topic
