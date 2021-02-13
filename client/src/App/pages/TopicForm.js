@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Helmet from "react-helmet"
 
 // Probably the worst code ever made. Please refactor
 const TopicForm = () => {
 
     const contentHandler = () => {
-        let content =[]
+        let content = []
         for (let index = 1; index <= 6; index++) {
             if (document.getElementById(`type${index}`).value.length > 0) {
                 content.push({
@@ -37,7 +38,18 @@ const TopicForm = () => {
     }
     return (
         <div>
+            <Helmet>
+                <script src="https://accounts.google.com/gsi/client"></script>
+
+            </Helmet>
+
+
+
             <h1>Topic Form WIP</h1>
+            <div id="g_id_onload"
+                data-client_id="88698105674-ee9eec2p78vii14p88ubfg1273p03509.apps.googleusercontent.com">
+                {/* data-login_uri="https://localhost:5000"> */}
+            </div>
             <p>Static Props: regex=[a-zA-Z]*println[a-zA-Z]* and Topic = Print Line</p>
             <p>Name<input id="name"></input></p>
             <p>regex<input id="regex"></input></p>
