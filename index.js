@@ -21,7 +21,7 @@ app.post('/api/addtopic', (req, res) => {
     console.log(req.body);
     const topic = req.body
     topicData.push({
-        "id": serverSettings.topicnum+1,
+        "id": serverSettings.topicnum + 1,
         "critical": 3,
         "name": topic.name,
         "description": "",
@@ -62,13 +62,13 @@ const saveSettings = () => {
     console.log("Incremented Topic: " + serverSettings.topicnum);
     let newSettings = JSON.stringify(serverSettings);
 
-    fs.writeFile(`./server-settings.json`, newSettings, 'utf8', ()=> console.log("Saved Settings"))
+    fs.writeFile(`./server-settings.json`, newSettings, 'utf8', () => console.log("Saved Settings"))
 }
 
 const saveData = () => {
     let topicjson = JSON.stringify(topicData);
 
-    fs.writeFile(`./data/${topicDataStoreName}.json`, topicjson, 'utf8', ()=> console.log("Saved Topics"))
+    fs.writeFile(`./data/${topicDataStoreName}.json`, topicjson, 'utf8', () => console.log("Saved Topics"))
 }
 
 
@@ -109,17 +109,22 @@ const updateLines = () => {
         return line
     }
     const createLines = (code) => {
-        const allLines = code.data.split("\n")
-        let lineNum = 0
-        const lines = allLines.map(line => {
-            const pos = lineNum
-            lineNum++
-            return ({
-                linenumber: pos,
-                line: line,
+        try {
+            const allLines = code.data.split("\n")
+            let lineNum = 0
+            const lines = allLines.map(line => {
+                const pos = lineNum
+                lineNum++
+                return ({
+                    linenumber: pos,
+                    line: line,
+                })
             })
-        })
-        return lines
+            return lines
+        } catch (error) {
+            console.log(error);
+        }
+
     }
 
     // Cycle through loaded data:
@@ -127,7 +132,7 @@ const updateLines = () => {
     // Every Content in Topic where type=code
     // Every Line passed to createLinks()
     const newData = JSON.parse(JSON.stringify(topicData)).map(topic => {
-        
+
         // DIRECTLY AFFECTS LOADED DATA, NEED TO CHANGE TO NOT DO THAT
         topic.content = topic.content.map(content => {
             if (content.type != "code") {
