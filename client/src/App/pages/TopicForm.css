@@ -1,0 +1,16 @@
+.contentform{
+    background-color: rgb(91, 74, 129);
+    border-radius: 4%;
+    /* width: 50%; */
+    color: white;
+    text-align: center;
+    
+
+}
+.contentformcontainer{
+    width: 50%;
+    align-items: center;
+    margin: 0 auto;
+
+
+}
