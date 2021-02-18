@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
-import TopicForm from './pages/TopicForm';
+import TopicForm from './pages/NewTopicForm';
 import Test from './pages/Test'
 import Topic from './pages/Components/Topic';
 import Pagination from './pages/Pagination';
