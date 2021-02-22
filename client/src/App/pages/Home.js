@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { MDBBtn } from "mdbreact";
 
 const Home = () => {
     return (<div className="App">
     <h1>Code Port</h1>
-    {/* <MDBBtn color="primary">Primary</MDBBtn> */}
     {/* Link to List.js */}
     <Link to={'./test'}>
       <button variant="raised">
