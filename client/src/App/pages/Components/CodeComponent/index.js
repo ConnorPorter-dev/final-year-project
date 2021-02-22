@@ -17,7 +17,7 @@ const CodeComponent = (props) => {
                             <div className="col s12 m6">
                                 <div className="card blue-grey darken-1 z-depth-3">
                                     <div className="card-content white-text">
-                                        <span className="card-title">Smart Analysis</span>
+                                        <span className="card-title">📈Smart Analysis📈</span>
                                         <p>Line {selectedLine.linenumber}</p>
                                     </div>
                                     <div className="card-action">
@@ -39,6 +39,7 @@ const CodeComponent = (props) => {
 
     return (
         <div className="code-component">
+            <p className="sa-info">ℹ️ Click on a line number for Smart Analysis!</p>
             <LineClicked />
             <div className="row">
                 <div className="col s1 link-container">
@@ -46,7 +47,7 @@ const CodeComponent = (props) => {
                         {
                             props.content.lines.map(line =>
                                 <li className="line-link right-align" key={line.linenumber} value={line.linenumber} onClick={e => setLine(props.content.lines.find(line => e.target.getAttribute("value") == line.linenumber))}>
-                                    Line {line.linenumber + 1}
+                                    ❔ Line {line.linenumber + 1}
                                 </li>
                             )
 
