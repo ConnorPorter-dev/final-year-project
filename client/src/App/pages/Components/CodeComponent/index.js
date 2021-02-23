@@ -18,7 +18,7 @@ const CodeComponent = (props) => {
                                 <div className="card blue-grey darken-1 z-depth-3">
                                     <div className="card-content white-text">
                                         <span className="card-title">📈Smart Analysis📈</span>
-                                        <p>Line {selectedLine.linenumber}</p>
+                                        <p>Line {selectedLine.linenumber +1}</p>
                                     </div>
                                     <div className="card-action">
                                         <div>                                        
