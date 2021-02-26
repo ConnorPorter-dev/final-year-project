@@ -47,7 +47,7 @@ const CodeComponent = (props) => {
                         {
                             props.content.lines.map(line =>
                                 <li className="line-link right-align" key={line.linenumber} value={line.linenumber} onClick={e => setLine(props.content.lines.find(line => e.target.getAttribute("value") == line.linenumber))}>
-                                    ❔ Line {line.linenumber + 1}
+                                    ❔{line.linenumber + 1}
                                 </li>
                             )
 
