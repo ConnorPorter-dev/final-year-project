@@ -31,19 +31,21 @@ function Topic({ match }) {
                     <h1 id="topic-title">{topic.name}</h1>
                 </div>
                 <h1 id="topic-title">{topic.name}</h1>
+                <div className="content">
+                    {topic.content.map(content => {
+                        switch (content.type) {
+                            case "code":
+                                return <CodeComponent content={content} />
+                            case "video":
+                                return <Video content={content} />
+                            case "markdown": // Markdown Content
+                                return <ReactMarkdown>{content.data}</ReactMarkdown>
+                            default:
+                                return <p>Error reading content type: {content.type}</p>
+                        }
+                    })}
+                </div>
 
-                {topic.content.map(content => {
-                    switch (content.type) {
-                        case "code":
-                            return <CodeComponent content={content} />
-                        case "video":
-                            return <Video content={content} />
-                        case "markdown": // Markdown Content
-                            return <ReactMarkdown>{content.data}</ReactMarkdown>
-                        default:
-                            return <p>Error reading content type: {content.type}</p>
-                    }
-                })}
                 <p><Link to={`/topic/${topic.next}`}>Next Topic</Link></p>
             </div>
 

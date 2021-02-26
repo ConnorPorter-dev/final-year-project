@@ -10,24 +10,38 @@
     width: 50%;
 }
 
-#topic-title {
-
-}
+#topic-title {}
 
 .topic-title-container {
     padding: 60px;
     text-align: center;
-    background: #1abc9c;
+    /* background: #531c1c; */
+    background: rgb(0, 0, 0);
+    /* background: radial-gradient(circle, rgba(0, 0, 0, 1) 0%, rgb(255, 85, 85) 100%); */
+    background: radial-gradient(circle, rgb(255, 85, 85) 20%, rgb(40, 42, 54) 100%);
+
     color: white;
     font-size: 30px;
-} 
+}
 
-.outer-container{
+.outer-container {
     display: flex;
     justify-content: center;
 }
 
-.inner-container{
+.inner-container {
     text-align: center;
-    width: 50%;
+    width: 60%;
+    background-color: #13141a !important;
+}
+
+.content {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+@media only screen and (max-width: 1000px) {
+    .inner-container {
+        width: 100%;
+    }
 }
