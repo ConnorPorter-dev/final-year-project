@@ -57,6 +57,11 @@ app.listen(port);
 
 console.log('App is listening on port ' + port);
 
+//////////////
+// SERVER FUNCTIONS
+/////////////
+
+
 const saveSettings = () => {
     serverSettings.topicnum++
     console.log("Incremented Topic: " + serverSettings.topicnum);
@@ -97,6 +102,9 @@ const updateLines = () => {
         line.links = []
         regexArray.map(topic => {
             topic.regexkey.map(regexStr => {
+                if (regexStr === "") {
+                    return
+                }
                 exp = new RegExp(regexStr)
                 if (exp.test(line.line)) {
                     line.links.push({
@@ -104,6 +112,7 @@ const updateLines = () => {
                         "id": topic.id
                     })
                 }
+
             })
         })
         return line
