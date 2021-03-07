@@ -4,8 +4,8 @@
   "description": "University Final Year Project",
   "main": "index.js",
   "scripts": {
-    "server-start": "node index.js",
-    "start-front-end": "cd client && npm run start",
+    "run-server": "node index.js",
+    "run-frontend": "cd client && npm run start",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
     "run-both": "start npm run start-front-end && npm run server-start"
   },
