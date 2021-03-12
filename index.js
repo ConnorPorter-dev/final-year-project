@@ -162,3 +162,4 @@ const updateLines = () => {
 }
 
 updateLines() // Delete eventually, this is for testing purposes
+saveData()

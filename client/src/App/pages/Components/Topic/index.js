@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import CodeComponent from '../CodeComponent';
 import ReactMarkdown from 'react-markdown'
-import Video from '../Video'
+import Video from '../Video/NewVideo'
 import './Topic.css'
 
 // Component to display a topic information on the page based on the url
