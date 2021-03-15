@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import gfm from 'remark-gfm' 
 import CodeComponent from '../CodeComponent';
 import ReactMarkdown from 'react-markdown'
 import Video from '../Video/NewVideo'
@@ -39,7 +40,7 @@ function Topic({ match }) {
                             case "video":
                                 return <Video content={content} />
                             case "markdown": // Markdown Content
-                                return <ReactMarkdown>{content.data}</ReactMarkdown>
+                                return <ReactMarkdown plugins={[gfm]}>{content.data}</ReactMarkdown>
                             default:
                                 return <p>Error reading content type: {content.type}</p>
                         }
