@@ -1,0 +1,33 @@
+.topicDescription {
+    white-space: pre-wrap;
+}
+
+.codeContainer {
+    /* max-width: 50%; */
+}
+
+.codeContainer2 {
+    width: 50%;
+}
+
+#topic-title {
+
+}
+
+.topic-title-container {
+    padding: 60px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+    font-size: 30px;
+} 
+
+.outer-container{
+    display: flex;
+    justify-content: center;
+}
+
+.inner-container{
+    text-align: center;
+    width: 50%;
+}
