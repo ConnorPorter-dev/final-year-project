@@ -1,0 +1,27 @@
+{
+  "name": "final-year-project",
+  "version": "1.0.0",
+  "description": "University Final Year Project",
+  "main": "index.js",
+  "scripts": {
+    "server-start": "node index.js",
+    "start-front-end": "cd client && npm run start",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build",
+    "run-both": "start npm run start-front-end && npm run server-start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ConnorPorter-dev/final-year-project.git"
+  },
+  "author": "Connor Porter",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ConnorPorter-dev/final-year-project/issues"
+  },
+  "homepage": "https://github.com/ConnorPorter-dev/final-year-project#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "helmet": "^4.2.0",
+    "morgan": "^1.10.0"
+  }
+}

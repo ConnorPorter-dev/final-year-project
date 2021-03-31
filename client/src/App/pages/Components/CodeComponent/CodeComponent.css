@@ -1,0 +1,28 @@
+.code-component > pre {
+    margin-bottom: 0%;
+}
+
+.topic-button {
+    background-color: #44475a;
+    color: #f8f8f2;
+    border: 2px solid #bd93f9;
+    margin: 1em;
+    padding: 0.5em;
+    border-radius: 10%;
+}
+.analysis-title{
+    margin-top: 0%;
+    background-color: #44475a;
+    /* border-radius: 25px; */
+    overflow: hidden;
+    font-size: 105%;
+}
+.analysis-container{
+    border-radius: 0px 0px 25px 25px;
+    margin-top: 0%;
+    padding-top: 0%;
+    border: 2px solid #44475a;
+    background-color: #282a36;
+    color: white;
+
+}
