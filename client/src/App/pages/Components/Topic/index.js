@@ -5,7 +5,8 @@ import CodeComponent from '../CodeComponent';
 import ReactMarkdown from 'react-markdown'
 import Video from '../Video/NewVideo'
 import './Topic.css'
-
+import Icon from '../../../../Assets/Icons/008-compass.svg'
+import Icon2 from '../../../../Assets/Icons/017-map.svg'
 // Component to display a topic information on the page based on the url
 // Requires a call to server to obtain the topic
 function Topic({ match }) {
@@ -28,10 +29,11 @@ function Topic({ match }) {
     if (!loading) {
         return (<div className="outer-container">
             <div className="inner-container">
-                <div className="topic-title-container">
+                {/* <div className="topic-title-container">
                     <h1 id="topic-title">{topic.name}</h1>
-                </div>
-                <h1 id="topic-title">{topic.name}</h1>
+                </div> */}
+                {/* <br/> */}
+                <h1 id="topic-title"><img className="title-image"src={Icon}></img>{topic.name}</h1>
                 <div className="content">
                     {topic.content.map(content => {
                         switch (content.type) {
@@ -47,7 +49,7 @@ function Topic({ match }) {
                     })}
                 </div>
 
-                <p><Link to={`/topic/${topic.next}`}>Next Topic</Link></p>
+                <p><Link to={`/topic/${topic.next}`}><img className="title-image"src={Icon2}></img>Next Topic</Link></p>
             </div>
 
         </div>)

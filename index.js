@@ -47,6 +47,21 @@ app.get('/api/getData', (req, res) => {
     console.log("Test Data Sent");
 })
 
+app.get('/api/getMeta', (req, res) => {
+    const meta = topicData.map(topic => {
+        return {
+            'id': topic.id,
+            'name': topic.name,
+            'description': topic.description,
+            'critical': topic.critical
+        }
+    })
+    console.log(meta);
+    res.json(meta)
+    console.log("Meta Data Sent");
+})
+
+
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname + '/client/build/index.html'));

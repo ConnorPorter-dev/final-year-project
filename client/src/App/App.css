@@ -4,6 +4,11 @@
 
 body {
   /* background-color: #0a0b11; */
-  background-color: #1c1d25;
-  color: white;
+  background-image: url('../Assets/Backgrounds/4163867.svg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-attachment: fixed;
+  /* background-position: center; */
+  background-color: white;
+  color: black;
 }
