@@ -1,3 +1,7 @@
 .mediaContainer{
     /* background-color: aquamarine; */
 }
+
+iframe{
+    max-width: 100% !important;
+}
